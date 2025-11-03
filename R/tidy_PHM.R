@@ -5,6 +5,8 @@
 #' @param x A dataframe containing the raw data.
 #' @param primary_segment A string representing the primary segment column name.
 #' @param secondary_segment A string representing the secondary segment column name.
+#' @import dplyr
+#' @import tidyr
 #'
 #' @return A tidy dataframe.
 #' @export
