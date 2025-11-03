@@ -9,8 +9,6 @@
 #' @return A tidy dataframe.
 #' @export
 tidy_PHM <- function(x,primary_segment,secondary_segment){
-  primary_segment_sym<-sym(primary_segment)
-  secondary_segment_sym<-sym(secondary_segment)
   organised_cols <- x[1:2,2:ncol(x)]
   organised_cols <-as.data.frame(t(organised_cols))
   rownames(organised_cols) <- NULL
