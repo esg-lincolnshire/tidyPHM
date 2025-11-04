@@ -11,6 +11,7 @@
 #' @return A tidy dataframe.
 #' @export
 tidy_PHM <- function(x,primary_segment,secondary_segment){
+  x[3, ] <- as.list(gsub(",", "", x[3, ]))
   organised_cols <- x[1:2,2:ncol(x)]
   organised_cols <-as.data.frame(t(organised_cols))
   rownames(organised_cols) <- NULL
@@ -34,7 +35,6 @@ tidy_PHM <- function(x,primary_segment,secondary_segment){
       values_from = "METRIC_VALUE"
     )
   x <- inner_join(organised_cols,x,by=c("columnID"=secondary_segment))
-  x$Population<-as.integer(sub(",","",x$Population))
   x <- x %>%
     mutate(across(4:ncol(x), as.numeric))
   x<- x %>% select(-columnID)
