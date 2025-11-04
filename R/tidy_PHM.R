@@ -20,7 +20,7 @@ tidy_PHM <- function(x,primary_segment,secondary_segment){
     mutate(columnID = row.names(organised_cols))
   x<-x[,-ncol(x)]
   colnames(x)[1]<-"METRIC"
-  x <- x[x$METRIC!="PCN" & x$METRIC!="Practice" & !is.na(x$METRIC) & x$METRIC!="Ethnicity Sub-Group" & !is.na(x$`Whole population for NHS Lincolnshire ICB`),]
+  x <- x[x$METRIC!="PCN" & x$METRIC!="Practice" & !is.na(x$METRIC) & x$METRIC!="Ethnicity Sub-Group" & !is.na(x$`Whole population for NHS Lincolnshire ICB` & !is.na(as.numeric(x$`Whole population for NHS Lincolnshire ICB`))),]
   colnames(x)[2:ncol(x)]<-as.character(seq_along(x)[-1])
   x<- x %>%
     pivot_longer(
